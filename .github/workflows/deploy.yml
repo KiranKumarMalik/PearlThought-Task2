@@ -1,0 +1,31 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Download from GitHub
+        run: git clone hhttps://github.com/KiranKumarMalik/PearlThought-Task2.git
+
+      - name: Navigate to directory
+        run: cd Deploy-NestJS-helloWorld
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run start
